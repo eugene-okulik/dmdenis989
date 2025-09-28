@@ -6,6 +6,10 @@ class Flowers:
         self.price = price
         self.stem_length = stem_length
 
+    def __repr__(self):
+        return (f"{self.name}(Цвет: {self.color}; Срок жизни: {self.live_time} дней;"
+                f" Цена: {self.price} руб; Длина стебля: {self.stem_length} см.)")
+
 
 class Roses(Flowers):
     def __init__(self, name, color, live_time, price, stem_length):
@@ -48,31 +52,32 @@ class Buket:
         :param self: принимает экземпляр список класса Buket,
         заполненный экземплярами дочерних классов родительского класса Flowers
         """
-        return sum(map(lambda x: x.price, self.lst))
+        return f'Стоимость букета: {sum(map(lambda x: x.price, self.lst))}'
 
     def sorting(self, param, kind):
         """
         Сортируем список экземпляров класса по заданному параметру,
-        возвращаем новый список из аттрибутов name каждого экземпляра класса
+        возвращаем отсортированные в списке объекты
         :param self: принимает список экземпляров класса
         :param param: принимает строковое значение аттрибута экземпляра по которому будет происходить сортировка
         :param kind: bool - определяет как сортировать: по возрастанию или убыванию
         """
-        # тут у меня был другой код и он мне отдавал список объектов питона, а нужен был список аттрибутов name
-        # для идентификации цветов в списке, поэтому пришлось воспользоваться помощью нейросети
-        # и она мне подсказала как можно с помощью key=lambda и функции getattr достать нужное значение
-        # про магический метод позже посмотрел, домашку начал параллельно делать с просмотром 12 урока
         lst2 = sorted(self.lst, key=lambda item: getattr(item, param), reverse=kind)
-        return [getattr(item, 'name') for item in lst2]
+        if kind is True:
+            return f'Букет отсортирован по параметру {param} в порядке убывания: \n{lst2}'
+        else:
+            return f'Букет отсортирован по параметру {param} в порядке возрастания: \n{lst2}'
 
-    def find_flower(self, time_of_life):
+    def find_flower(self, param, value):
         """
         Поиск цветов по аттрибуту время жизни цветка
         возвращаем новый список из аттрибутов name цветов подходящих под условия поиска
         :param self: принимает список экземпляров класса
-        :param time_of_life: принимает параметр int - время жизни цветка
+        :param param: принимает аттрибут экземпляра класса как параметр
+        :param value: принимает значение аттрибута класса
         """
-        return [flower.name for flower in self.lst if flower.live_time == time_of_life]
+        return (f'Результаты поиска по параметру {param} у которого значение {value}:\n'
+                f'{[flower for flower in self.lst if getattr(flower, param) == value]}')
 
     def buket_death(self):
         """
@@ -81,14 +86,14 @@ class Buket:
         :param self: принимает список экземпляров класса
         """
         live_lst = list(map(lambda x: x.live_time, self.lst))
-        return sum(live_lst) / len(live_lst)
+        return f'Продолжительность жизни букета: {round(sum(live_lst) / len(live_lst), 2)} дней'
 
 
 buket = Buket([red_rose, black_rose, white_rose, white_tulip,
               yellow_tulip, red_tulip, yellow_herber, red_herber, orange_herber])
 
 
-print(buket.price())
-print(buket.find_flower(6))
-print(buket.buket_death())
-print(buket.sorting('live_time', False))
+print(buket.price(), "\n")
+print(buket.buket_death(), "\n")
+print(buket.sorting('live_time', False), "\n")
+print(buket.find_flower('color', 'red'))
