@@ -6,9 +6,9 @@ class Flowers:
         self.price = price
         self.stem_length = stem_length
 
-    def __repr__(self):
-        return (f"{self.name}(Цвет: {self.color}; Срок жизни: {self.live_time} дней;"
-                f" Цена: {self.price} руб; Длина стебля: {self.stem_length} см.)")
+    # def __repr__(self):
+    #     return (f"{self.name}(Цвет: {self.color}; Срок жизни: {self.live_time} дней;"
+    #             f" Цена: {self.price} руб; Длина стебля: {self.stem_length} см.)")
 
 
 class Roses(Flowers):
@@ -63,10 +63,7 @@ class Buket:
         :param kind: bool - определяет как сортировать: по возрастанию или убыванию
         """
         lst2 = sorted(self.lst, key=lambda item: getattr(item, param), reverse=kind)
-        if kind is True:
-            return f'Букет отсортирован по параметру {param} в порядке убывания: \n{lst2}'
-        else:
-            return f'Букет отсортирован по параметру {param} в порядке возрастания: \n{lst2}'
+        return lst2
 
     def find_flower(self, param, value):
         """
@@ -76,8 +73,7 @@ class Buket:
         :param param: принимает аттрибут экземпляра класса как параметр
         :param value: принимает значение аттрибута класса
         """
-        return (f'Результаты поиска по параметру {param} у которого значение {value}:\n'
-                f'{[flower for flower in self.lst if getattr(flower, param) == value]}')
+        return [flower for flower in self.lst if getattr(flower, param) == value]
 
     def buket_death(self):
         """
