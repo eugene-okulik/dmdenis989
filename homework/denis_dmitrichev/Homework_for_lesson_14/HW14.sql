@@ -41,3 +41,12 @@ JOIN marks m ON m.student_id = s.id
 JOIN lessons l ON l.id = m.lesson_id 
 JOIN subjects sb ON sb.id = l.subject_id
 WHERE  s.id = 21456;
+
+
+
+
+
+
+											   
+
+
