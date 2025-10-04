@@ -27,11 +27,11 @@
 													 	-- ('3',13268, 21456);
 SELECT value
 FROM marks 
-WHERE student_id = 21456
+WHERE student_id = 21456;
 
-SELECT title, s.*
-FROM books s
-WHERE taken_by_student_id = 21456
+SELECT title
+FROM books
+WHERE taken_by_student_id = 21456;
 
 SELECT g.title, b.title, m.value, l.title, sb.title 
 FROM students s
@@ -41,12 +41,3 @@ JOIN marks m ON m.student_id = s.id
 JOIN lessons l ON l.id = m.lesson_id 
 JOIN subjects sb ON sb.id = l.subject_id
 WHERE  s.id = 21456;
-
-
-
-
-
-
-											   
-
-
