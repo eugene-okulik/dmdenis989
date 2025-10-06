@@ -1,4 +1,4 @@
--- INSERT INTO students (name, second_name, group_id) VALUES ('Denis', 'Dmitrichev', 1);
+-- INSERT INTO students (name, second_name) VALUES ('Denis', 'Dmitrichev');
 
 -- INSERT INTO books (title, taken_by_student_id) VALUES ('Outcomes Elementary Workbook', 21456),
 													  -- ('Outcomes Elementary Students book', 21456),
@@ -6,7 +6,7 @@
 
 -- INSERT INTO `groups` (title, start_date, end_date) VALUES ('Forever alone', 'sep 2025', 'dec 2025');
 
--- UPDATE students SET group_id = 21421 WHERE name = 'Denis' AND second_name = 'Dmitrichev'
+-- UPDATE students SET group_id = 21421 WHERE id = 21456
 
 -- INSERT INTO subjects (title) VALUES ('Painting'),
 									-- ('Class hour'),
