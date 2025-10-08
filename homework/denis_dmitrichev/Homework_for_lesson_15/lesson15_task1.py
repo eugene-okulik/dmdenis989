@@ -118,7 +118,7 @@ db.commit()
 
 select_query1 = '''
 SELECT value as mark_value
-FROM marks 
+FROM marks
 WHERE student_id = %s;
 '''
 cursor.execute(select_query1, (student_id,))
@@ -135,11 +135,11 @@ data2 = cursor.fetchall()
 print(data2)
 
 select_query3 = '''
-SELECT 
-    g.title as group_title, 
-    b.title as book_title, 
-    m.value as mark_value, 
-    l.title as lesson_title, 
+SELECT
+    g.title as group_title,
+    b.title as book_title,
+    m.value as mark_value,
+    l.title as lesson_title,
     sb.title as subject_title
 FROM students s
 JOIN `groups` g ON g.id = s.group_id
