@@ -15,20 +15,11 @@ values = ('Kirill', 'Andropov')
 cursor.execute(query, values)
 student_id = cursor.lastrowid
 
-query2_1 = "INSERT INTO books (title, taken_by_student_id) VALUES (%s, %s)"
-values2_1 = ('Outcomes Elementary Workbook2', student_id)
-cursor.execute(query2_1, values2_1)
-workbook_id = cursor.lastrowid
-
-query2_2 = "INSERT INTO books (title, taken_by_student_id) VALUES (%s, %s)"
-values2_2 = ('Outcomes Elementary Students book2', student_id)
-cursor.execute(query2_2, values2_2)
-students_book_id = cursor.lastrowid
-
-query2_3 = "INSERT INTO books (title, taken_by_student_id) VALUES (%s, %s)"
-values2_3 = ('Essential Grammar2', student_id)
-cursor.execute(query2_3, values2_3)
-grammar_id = cursor.lastrowid
+query_2 = "INSERT INTO books (title, taken_by_student_id) VALUES (%s, %s)"
+values2 = [('Outcomes Elementary Workbook2', student_id),
+           ('Outcomes Elementary Students book2', student_id),
+           ('Essential Grammar2', student_id)]
+cursor.executemany(query_2, values2)
 
 query3 = "INSERT INTO `groups` (title, start_date, end_date) VALUES (%s, %s, %s)"
 values3 = ('Forever alone2', 'sep 2025', 'dec 2025')
@@ -84,35 +75,11 @@ values6_6 = ('Fish2', cooking_id)
 cursor.execute(query6_6, values6_6)
 fish_id = cursor.lastrowid
 
-query7_1 = "INSERT INTO marks (value, lesson_id, student_id) VALUES (%s, %s, %s)"
-values7_1 = (5, draw_picture_id, student_id)
-cursor.execute(query7_1, values7_1)
-mark1_id = cursor.lastrowid
-
-query7_2 = "INSERT INTO marks (value, lesson_id, student_id) VALUES (%s, %s, %s)"
-values7_2 = (4, draw_human_id, student_id)
-cursor.execute(query7_2, values7_2)
-mark2_id = cursor.lastrowid
-
-query7_3 = "INSERT INTO marks (value, lesson_id, student_id) VALUES (%s, %s, %s)"
-values7_3 = (5, conversation_id, student_id)
-cursor.execute(query7_3, values7_3)
-mark3_id = cursor.lastrowid
-
-query7_4 = "INSERT INTO marks (value, lesson_id, student_id) VALUES (%s, %s, %s)"
-values7_4 = (3, nothing_id, student_id)
-cursor.execute(query7_4, values7_4)
-mark4_id = cursor.lastrowid
-
-query7_5 = "INSERT INTO marks (value, lesson_id, student_id) VALUES (%s, %s, %s)"
-values7_5 = (5, meat_id, student_id)
-cursor.execute(query7_5, values7_5)
-mark5_id = cursor.lastrowid
-
-query7_6 = "INSERT INTO marks (value, lesson_id, student_id) VALUES (%s, %s, %s)"
-values7_6 = (3, fish_id, student_id)
-cursor.execute(query7_6, values7_6)
-mark6_id = cursor.lastrowid
+query7 = "INSERT INTO marks (value, lesson_id, student_id) VALUES  (%s, %s, %s)"
+values7 = [(5, draw_picture_id, student_id), (4, draw_human_id, student_id),
+           (5, conversation_id, student_id), (3, nothing_id, student_id),
+           (5, meat_id, student_id), (3, fish_id, student_id)]
+cursor.executemany(query7, values7)
 
 db.commit()
 
