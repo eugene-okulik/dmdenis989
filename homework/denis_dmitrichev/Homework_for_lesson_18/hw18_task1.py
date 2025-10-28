@@ -7,11 +7,11 @@ def clear(created_id):
 
 def create_object_id():
     body = {
-            "name": "New_object",
-            "data": {
-                     "color": "blue",
-                     "size": "small"
-            }
+        "name": "New_object",
+        "data": {
+            "color": "blue",
+            "size": "small"
+        }
     }
     headers = {'Content-Type': 'application/json'}
     response = requests.post('http://objapi.course.qa-practice.com/object', json=body, headers=headers)
@@ -20,11 +20,11 @@ def create_object_id():
 
 def create_object():
     body = {
-            "name": "New_object",
-            "data": {
-                     "color": "blue",
-                     "size": "small"
-            }
+        "name": "New_object",
+        "data": {
+            "color": "blue",
+            "size": "small"
+        }
     }
     headers = {'Content-Type': 'application/json'}
     response = requests.post('http://objapi.course.qa-practice.com/object', json=body, headers=headers)
@@ -38,11 +38,11 @@ def create_object():
 def change_object():
     obj_id = create_object_id()
     body = {
-            "name": "New_object2",
-            "data": {
-                     "color": "green",
-                     "size": "big"
-            }
+        "name": "New_object2",
+        "data": {
+            "color": "green",
+            "size": "big"
+        }
     }
     headers = {'Content-Type': 'application/json'}
     response = requests.put(f'http://objapi.course.qa-practice.com/object/{obj_id}',
@@ -58,7 +58,7 @@ def change_object():
 def patch_object():
     obj_id = create_object_id()
     body = {
-            "name": "My_object",
+        "name": "My_object",
     }
     headers = {'Content-Type': 'application/json'}
     response = requests.patch(f'http://objapi.course.qa-practice.com/object/{obj_id}',
