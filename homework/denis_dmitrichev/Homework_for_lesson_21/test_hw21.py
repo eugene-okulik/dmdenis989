@@ -10,7 +10,7 @@ import allure
 def test_get_object(create_object_id, print_start_completed, print_before_after):
     with allure.step(f'Run get request for {create_object_id}'):
         response = requests.get(f'http://objapi.course.qa-practice.com/object/{create_object_id}')
-    with allure.step(f'Check response for request'):
+    with allure.step('Check response for request'):
         assert response.status_code == 200, 'Код ответа не 200'
     with allure.step(f'Check ID is {create_object_id}'):
         assert response.json()['id'] == create_object_id, 'Вернулся не тот ID'
@@ -63,11 +63,11 @@ def test_change_object(create_object_id, print_before_after):
                             json=body, headers=headers)
     with allure.step('Run check status code'):
         assert response.status_code == 200, 'Код ответа не 200'
-    with allure.step(f'Check response name == New_object2'):
+    with allure.step('Check response name == New_object2'):
         assert response.json()["name"] == "New_object2", 'name не изменился'
-    with allure.step(f'Check response color == green'):
+    with allure.step('Check response color == green'):
         assert response.json()["data"]["color"] == "green", 'color не изменился'
-    with allure.step(f'Check response size == big'):
+    with allure.step('Check response size == big'):
         assert response.json()["data"]["size"] == "big", 'size не изменился'
 
 
@@ -85,7 +85,7 @@ def test_patch_object(create_object_id, print_before_after):
                               json=body, headers=headers)
     with allure.step('Run check status code'):
         assert response.status_code == 201, 'Код ответа не 200'
-    with allure.step(f'Check response name == My_object'):
+    with allure.step('Check response name == My_object'):
         assert response.json()["name"] == 'My_object', 'name не изменился'
     with allure.step('Check response color == blue'):
         assert response.json()["data"]["color"] == "blue", 'color изменился'
