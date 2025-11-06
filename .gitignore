@@ -7,3 +7,6 @@ __pycache__
 credentials.py
 .env
 creds.py
+/homework/denis_dmitrichev/Homework_for_lesson_21/allure-reports/
+/homework/denis_dmitrichev/Homework_for_lesson_21/allure-results/
+/homework/denis_dmitrichev/Homework_for_lesson_21/allure-report/
