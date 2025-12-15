@@ -1,0 +1,42 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+
+
+driver = webdriver.Chrome()
+
+driver.maximize_window()
+driver.get('https://demoqa.com/automation-practice-form')
+first_name = driver.find_element(By.XPATH, '//*[@id="firstName"]')
+first_name.send_keys('Denis')
+last_name = driver.find_element(By.XPATH, '//*[@id="lastName"]')
+last_name.send_keys('Dmitrichev')
+email = driver.find_element(By.XPATH, '//*[@id="userEmail"]')
+email.send_keys('dmdenis@gmail.com')
+gender_male_radiobutton = driver.find_element(By.CSS_SELECTOR, '[for="gender-radio-1"]')
+gender_male_radiobutton.click()
+mobile_phone = driver.find_element(By.XPATH, '//*[@id="userNumber"]')
+mobile_phone.send_keys('9112345678')
+date_of_birth = driver.find_element(By.XPATH, '//*[@id="dateOfBirthInput"]')
+date_of_birth.click()
+date_of_birth.send_keys(Keys.CONTROL, 'a')
+date_of_birth.send_keys('05 Aug 1989')
+date_of_birth.send_keys(Keys.ENTER)
+subject_container = driver.find_element(By.ID, 'subjectsInput')
+subject_container.send_keys('Eng')
+subject_container.send_keys(Keys.ENTER)
+hobbies_sports = driver.find_element(By.CSS_SELECTOR, '[for="hobbies-checkbox-1"]')
+hobbies_sports.click()
+address = driver.find_element(By.CSS_SELECTOR, '[placeholder="Current Address"]')
+address.send_keys('Kazan, Gavrilov str. 24-125')
+state_selector = driver.find_element(By.CSS_SELECTOR, '#react-select-3-input')
+state_selector.send_keys('Haryana')
+state_selector.send_keys(Keys.ENTER)
+city_selector = driver.find_element(By.CSS_SELECTOR, '#react-select-4-input')
+city_selector.send_keys('Karnal')
+city_selector.send_keys(Keys.ENTER)
+submit_button = driver.find_element(By.CSS_SELECTOR, '[id="submit"]')
+submit_button.click()
+info_table = driver.find_element(By.CSS_SELECTOR,
+                                 '[class="table table-dark table-striped table-bordered table-hover"]')
+print(info_table.get_attribute("innerText"))
