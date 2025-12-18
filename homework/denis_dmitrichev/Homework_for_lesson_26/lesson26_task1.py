@@ -18,7 +18,7 @@ def driver():
 def test_new_window(driver):
     driver.get("http://testshop.qa-practice.com/")
     good = driver.find_element(By.LINK_TEXT, "Customizable Desk")
-    good.send_keys(Keys.CONTROL + Keys.RETURN)
+    ActionChains(driver).key_down(Keys.CONTROL).click(good).key_up(Keys.CONTROL).perform()
     driver.switch_to.window(driver.window_handles[1])
     add_button = driver.find_element(By.ID, "add_to_cart")
     add_button.click()
