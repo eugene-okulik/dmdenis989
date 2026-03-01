@@ -22,4 +22,3 @@ class BasePage:
 
     def open_main_page(self):
         self.page.goto(self.base_url)
-

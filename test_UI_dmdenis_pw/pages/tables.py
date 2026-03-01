@@ -17,12 +17,12 @@ class Table(BasePage):
         search_button.first.click()
         self.page.wait_for_timeout(10000)
 
-    def send_query_in_search_field(self,query):
+    def send_query_in_search_field(self, query):
         search_field = self.find(loc.search_loc)
         search_field.nth(1).click()
         search_field.nth(1).fill(query)
 
-    def sort_by_name(self,good1_name):
+    def sort_by_name(self, good1_name):
         goods_names = self.find(loc.goods_name_loc)
         expect(goods_names.first).to_have_text(good1_name)
         dropdown_element = self.find(loc.dropdown_element_loc)
