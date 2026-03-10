@@ -1,0 +1,9 @@
+/dev/null - символьные устройства
+/dev/zero - символьные устройства
+/dev/sda - cannot access '/dev/sda': No such file or directory
+/dev/tty - символьные устройства
+/root - каталог
+/etc/passwd - обычный файл
+/proc/mounts - символьная ссылка
+/bin/ls - обычный файл 
+/bin/zcat - обычный файл
